@@ -21,10 +21,6 @@ D = createDictionary(m,n); % create the dictionary
 
 
 X = mp(Y,D);    % sparse coding stage
-X
-disp(sum(X(:)==0));
-disp('begin');
-disp(m*k);
 while( sum(X(:)==0) < (n*k)/2 )
     
     for i=1:m       % codebook update stage
@@ -61,6 +57,5 @@ while( sum(X(:)==0) < (n*k)/2 )
 
     D - normc(D);
     X = mp(Y,D);
-    disp(sum(X(:)==0));
 end
 
