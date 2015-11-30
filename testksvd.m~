@@ -1,0 +1,10 @@
+clear, clc;
+Y = rand(10,7);
+n=11;
+
+[m,k] = size(Y)             % obtain dimensions of Y
+
+D = createDictionary(m,n);   % but can colspace work to initialize dictionary?
+
+X = mp(Y,D);
+
