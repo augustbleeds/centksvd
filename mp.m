@@ -39,7 +39,7 @@ for i=1:k               % find sparse coding of EACH column
 end
 
 for i=1:n
-    for j=k
+    for j=1:k
         if(abs(X(i,j)) <= 1e-4)
            X(i,j) = 0; 
         end
