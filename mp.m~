@@ -9,6 +9,7 @@ if(nargin < 3)
                         % stopping condition is only governed by residual
 end 
 
+
 [m1,k] = size(Y);
 [m2,n] = size(D);
 
@@ -21,33 +22,33 @@ X = zeros(n,k);         % initialize the sparse coding
 for i=1:k               % find sparse coding of EACH column
     R = Y(:,i);         % init residual R to signal column
     
+    %(norm(R) > 1e-100)
     
-    while( (norm(R) > 1e-2) || (l0norm(R) > sparsity) )
+    while( (l0norm(X,1e-2) > sparsity) )
         
-        temp = 
-        
-        %for i=1:1  
-        %    max = abs(dot(R,D(:,1)));   % select maximum dot product
-        %    index = 1;
+        [~, index] = max(abs(D'*R));  % using inner product, find index which is most correlated
+       
+       coeff = dot( D(:,index), R);   % find the dot product (without absolute value)
+       
+       X(index,i) = X(index,i) + coeff;    % place coefficient in proper row of vector
+       
+       R = R - coeff*D(:,index);         % recompute residual
        
        
-       %for j=2:n   
-       %    temp = abs(dot(R,D(:,j)));
-       %    if( max < temp )
-       %       index = j;
-       %       max = temp; 
-       %    end
-       %end 
        
-       X(index,i) = max;    % place coefficient in proper row of vector
-       
-       R = R - max*D(:,index);         % recompute residual
-    
-       end  
-    
     end
     
 end
+
+for i=1:n
+    for j=1:k
+        if(abs(X(i,j)) <= 1e-4)
+           X(i,j) = 0; 
+        end
+    end
+end
+
+
 
     
 end

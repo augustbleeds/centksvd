@@ -1,10 +1,14 @@
-clear, clc;
-Y = rand(10,7);
-n=11;
+clear, clc
 
-[m,k] = size(Y)             % obtain dimensions of Y
+D = createDictionary(7,13);
 
-D = createDictionary(m,n);   % but can colspace work to initialize dictionary?
+[m,k] = size(Y); % obtain dimensions of Y
 
-X = mp(Y,D);
+[D,X] = cksvd(Y,n,2,10);
 
+%   generate Dictionary
+%   make dictionary seperate from the cksvd
+%   generate Y signal as linear combinations of Dictionary
+%
+%
+%

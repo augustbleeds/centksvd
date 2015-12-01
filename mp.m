@@ -22,9 +22,10 @@ X = zeros(n,k);         % initialize the sparse coding
 for i=1:k               % find sparse coding of EACH column
     R = Y(:,i);         % init residual R to signal column
     
-    while( (norm(R) > 1e-100) || (l0norm(X,1e-2) > sparsity) )
+    count = 0;
+    while(count < 10 || (l0norm(X,1e-2) > sparsity) )
         
-        [~, index] = max(abs(D'*R));  % using inner product, find index which is most correlated
+       [~, index] = max(abs(D'*R));  % using inner product, find index which is most correlated
        
        coeff = dot( D(:,index), R);   % find the dot product (without absolute value)
        
@@ -32,7 +33,7 @@ for i=1:k               % find sparse coding of EACH column
        
        R = R - coeff*D(:,index);         % recompute residual
        
-       
+       count = count + 1;
        
     end
     

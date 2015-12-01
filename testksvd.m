@@ -1,9 +1,14 @@
-clear, clc;
-Y = rand(10,7);
-Y= 100*Y;
-n=41;
+clear, clc
 
-[m,k] = size(Y);            % obtain dimensions of Y
+D = createDictionary(10,41);
 
-[D,X] = cksvd(Y,n,1);
+Y = createSignal(D, 5);
 
+
+
+[D,X] = cksvd(Y,D,10,10);
+
+% Centralized is finished
+%
+%
+%

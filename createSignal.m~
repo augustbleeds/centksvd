@@ -1,0 +1,11 @@
+function [ Y ] = createSignal( D, n )
+%CREATESIGNAL : creates an m x n signal from dictionary atoms
+
+[m,k] = size(D);  % row length
+
+X = rand(k,n);
+
+for 
+
+end
+
