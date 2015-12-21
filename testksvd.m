@@ -1,12 +1,14 @@
 clear, clc
 
-D = createDictionary(10,41);
+D = createDictionary(109,41);
 
 Y = createSignal(D, 5);
 
 
 
-[D,X] = cksvd(Y,D,10,10);
+[D,X] = cksvd(Y,D,19,10);
+
+Y - D*X
 
 % Centralized is finished
 %
